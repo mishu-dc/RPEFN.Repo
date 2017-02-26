@@ -1,0 +1,51 @@
+﻿@model RPEFN.UI.Models.WebApiToken
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (Model != null)
+{
+    <input type="hidden" value="@Model.TokenType @Model.AccessToken" id="token"/>
+}
+else
+{
+    <input type="hidden" value="Token Generation Failed" id="token" />
+}
+
+
+<div class="form-group">
+    <label class="control-label">Action</label>
+    <select class="form-control" id="method">
+        <option value="post">POST</option>
+        <option value="get">GET</option>
+        <option value="put">PUT</option>
+        <option value="delete">DELETE</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Url</label>
+    <input type="text" value="" id="url" class="form-control" />
+</div>
+
+<div class="form-group" id="grpRequest">
+    <label class="control-label">Body</label>
+    <textarea id="requestBody" class="form-control" rows="10"></textarea>
+</div>
+
+<div class="form-group">
+    <button type="button" id="btnSubmit" class="btn btn-primary">Submit</button>
+</div>
+
+<div class="form-group" id="grpResponse">
+    <label class="control-label" id="statusCode">Status Code:</label>
+    <textarea id="responseBody" class="form-control" rows="10"></textarea>
+</div>
+
+
+@section scripts{
+    <script type="text/javascript" src="/Scripts/jqueryWebService.js"></script>
+}
