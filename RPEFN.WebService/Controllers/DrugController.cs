@@ -45,7 +45,7 @@ namespace RPEFN.WebService.Controllers
                 else
                 {
                     drugs = await _unitOfWork.Drugs.GetAsync();
-                    MemoryCache.Default[DrugCachekey] = drugs;
+                    MemoryCache.Default.Add(DrugCachekey, drugs, DateTimeOffset.UtcNow.AddMinutes(10));
                 }
 
                 return Ok(drugs.Select(d => new DrugDto()
