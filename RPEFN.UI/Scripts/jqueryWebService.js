@@ -13,6 +13,16 @@ $(document).ready(function () {
         }
     });
 
+    function logResults(json) {
+        console.log(json);
+    }
+
+    $.ajax({
+        url: "https://api.github.com/users/jeresig",
+        dataType: "jsonp",
+        jsonpCallback: "logResults"
+    });
+
 
     $("#btnSubmit").click(function () {
 
