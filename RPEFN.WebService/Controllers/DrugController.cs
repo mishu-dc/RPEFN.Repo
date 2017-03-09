@@ -116,7 +116,8 @@ namespace RPEFN.WebService.Controllers
                         GenericName = drug.GenericName,
                         NdcId = drug.NdcId,
                         Price = drug.Price,
-                        Strength = drug.Strength
+                        Strength = drug.Strength,
+                        CreatedBy = User.Identity.Name
                     };
 
 
@@ -128,8 +129,9 @@ namespace RPEFN.WebService.Controllers
                     _logger.Info($"New drug created with id {drug.Id}");
 
                     InvalidateCache();
-
+                    
                     return Created(new Uri(Request.RequestUri + "/" + drug.Id), drug);
+                    
                 }
                 else
                 {
@@ -167,6 +169,7 @@ namespace RPEFN.WebService.Controllers
                     dbDrug.NdcId = drug.NdcId;
                     dbDrug.Price = drug.Price;
                     dbDrug.Strength = drug.Strength;
+                    dbDrug.UpdatedBy = User.Identity.Name;
 
                     await _unitOfWork.CompleteAsync();
 

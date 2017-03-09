@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Data.Common;
+using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using RPEFN.Data.Entities;
 using RPEFN.Data.Mappings;
@@ -10,6 +11,12 @@ namespace RPEFN.Data.Infrastructure
         public ApplicationDbContext()
             : base("RPEFN", throwIfV1Schema: false)
         {
+        }
+
+        public ApplicationDbContext(DbConnection connection)
+        : base(connection, true)
+        {
+            
         }
 
         private DbSet<Patient> Patients { get; set; }

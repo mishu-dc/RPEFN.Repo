@@ -6,8 +6,10 @@ namespace RPEFN.WebService.Dtos
     {
         public int Id { get; set; }
         [Required]
+        [MinLength(1)]
         public string BrandName { get; set; }
         [Required]
+        [MinLength(1)]
         public string GenericName { get; set; }
         [Required]
         public string NdcId { get; set; }

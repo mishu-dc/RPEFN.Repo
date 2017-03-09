@@ -15,7 +15,6 @@ E:\Work\Learning\RPEFN\RPEFN.Entity\bin\Release\Microsoft.AspNet.Identity.Entity
 E:\Work\Learning\RPEFN\RPEFN.Entity\bin\Release\Newtonsoft.Json.xml
 E:\Work\Learning\RPEFN\RPEFN.Entity\bin\Release\System.Net.Http.Formatting.xml
 E:\Work\Learning\RPEFN\RPEFN.Entity\bin\Release\System.Web.Http.xml
-E:\Work\Learning\RPEFN\RPEFN.Entity\obj\Release\RPEFN.Data.csprojResolveAssemblyReference.cache
 E:\Work\Learning\RPEFN\RPEFN.Entity\obj\Release\RPEFN.Data.Migrations.InitialMigration.resources
 E:\Work\Learning\RPEFN\RPEFN.Entity\obj\Release\RPEFN.Data.Migrations.PatientConfigurationChange.resources
 E:\Work\Learning\RPEFN\RPEFN.Entity\obj\Release\RPEFN.Data.csproj.GenerateResource.Cache
