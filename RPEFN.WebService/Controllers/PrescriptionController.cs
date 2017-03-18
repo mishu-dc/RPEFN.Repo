@@ -35,14 +35,14 @@ namespace RPEFN.WebService.Controllers
                 Patient patient = await _unitOfWork.Patients.GetAsync(rx.PatientId);
 
                 return
-                    Ok(new 
+                    Ok(new PrescriptionDto()
                     {
                         Id = rx.Id,
-                        Drug = new { Id = drug.Id, BrandName = drug.BrandName, Genericname = drug.GenericName, NdcId = drug.NdcId, Price = drug.Price, Strength = drug.Strength },
-                        rx.Dose,
-                        WrittenDate = rx.WrittenDate.ToString("mm-dd-yyyy"),
-                        rx.Duration,
-                        Patient = new { Id = patient.Id, FirstName = patient.FirstName, LastName = patient.LastName, Gender = patient.Gender, DateOfBirth = patient.DateOfBirth.ToString("MM-dd-yyyy")  }
+                        Drug = new DrugDto() { Id = drug.Id, BrandName = drug.BrandName, GenericName = drug.GenericName, NdcId = drug.NdcId, Price = drug.Price, Strength = drug.Strength },
+                        Dose = rx.Dose,
+                        WrittenDate = rx.WrittenDate,
+                        Duration = rx.Duration,
+                        Patient = new PatientDto() { Id = patient.Id, FirstName = patient.FirstName, LastName = patient.LastName, Gender = patient.Gender, DateOfBirth = patient.DateOfBirth }
                     });
             }
             catch (Exception ex)
@@ -62,14 +62,14 @@ namespace RPEFN.WebService.Controllers
             try
             {
                 return
-                    Ok((await _unitOfWork.Prescriptions.GetAllPrescriptionsWithDrugAndPatientAsync()).Select(rx => new 
+                    Ok((await _unitOfWork.Prescriptions.GetAllPrescriptionsWithDrugAndPatientAsync()).Select(rx => new PrescriptionDto()
                     {
                         Id = rx.Id,
-                        Drug = new { Id = rx.Drug.Id, BrandName = rx.Drug.BrandName, Genericname = rx.Drug.GenericName, NdcId = rx.Drug.NdcId, Price = rx.Drug.Price, Strength = rx.Drug.Strength },
+                        Drug = new DrugDto() { Id = rx.Drug.Id, BrandName = rx.Drug.BrandName, GenericName = rx.Drug.GenericName, NdcId = rx.Drug.NdcId, Price = rx.Drug.Price, Strength = rx.Drug.Strength },
                         Dose = rx.Dose,
                         WrittenDate = rx.WrittenDate,
                         Duration = rx.Duration,
-                        Patient = new { Id = rx.Patient.Id, FirstName = rx.Patient.FirstName, LastName = rx.Patient.LastName, Gender = rx.Patient.Gender, DateOfBirth = rx.Patient.DateOfBirth.ToString("MM-dd-yyyy") }
+                        Patient = new PatientDto() { Id = rx.Patient.Id, FirstName = rx.Patient.FirstName, LastName = rx.Patient.LastName, Gender = rx.Patient.Gender, DateOfBirth = rx.Patient.DateOfBirth }
                     }));
             }
             catch (Exception ex)
@@ -148,24 +148,24 @@ namespace RPEFN.WebService.Controllers
                 {
                     Drug dbDrug = await _unitOfWork.Drugs.GetAsync(rx.DrugId);
 
+                    Prescription dbRx = await _unitOfWork.Prescriptions.GetAsync(rx.Id);
+                    if (dbRx == null)
+                    {
+                        _logger.Warn($"Invalid Rx Id {rx.Id}");
+                        return NotFound();
+                    }
+
                     if (dbDrug == null)
                     {
                         _logger.Warn($"Invalid Drug Id {rx.DrugId}");
-                        return BadRequest("Invalid drugId");
+                        return NotFound();
                     }
 
                     Patient dbPatient = await _unitOfWork.Patients.GetAsync(rx.PatientId);
                     if (dbPatient == null)
                     {
                         _logger.Warn($"Invalid Patient Id {rx.PatientId}");
-                        return BadRequest("Invalid patientId");
-                    }
-                    
-                    Prescription dbRx = await _unitOfWork.Prescriptions.GetAsync(rx.Id);
-                    if (dbRx == null)
-                    {
-                        _logger.Warn($"Invalid Rx Id {rx.Id}");
-                        return BadRequest("Invalid Rx Id");
+                        return NotFound();
                     }
 
                     dbRx.Drug = dbDrug;
@@ -204,7 +204,7 @@ namespace RPEFN.WebService.Controllers
                     if (dbRx == null)
                     {
                         _logger.Warn($"Invalid Rx Id {prescriptionId}");
-                        return BadRequest("Invalid Rx Id");
+                        return NotFound();
                     }
 
                     _unitOfWork.Prescriptions.Remove(dbRx);

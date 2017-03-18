@@ -94,6 +94,8 @@
   <ItemGroup>
     <Compile Include="Controllers\BaseTest.cs" />
     <Compile Include="Controllers\DrugControllerTest.cs" />
+    <Compile Include="Controllers\PatientControllerTest.cs" />
+    <Compile Include="Controllers\PrescriptionControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

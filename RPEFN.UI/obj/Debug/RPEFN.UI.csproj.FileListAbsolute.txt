@@ -66,8 +66,8 @@ E:\Work\Learning\RPEFN\RPEFN.UI\bin\Microsoft.Owin.Security.OAuth.xml
 E:\Work\Learning\RPEFN\RPEFN.UI\bin\Microsoft.Owin.Security.Google.xml
 E:\Work\Learning\RPEFN\RPEFN.UI\bin\Microsoft.Owin.Security.Twitter.xml
 E:\Work\Learning\RPEFN\RPEFN.UI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Work\Learning\RPEFN\RPEFN.UI\obj\Debug\RPEFN.UI.csprojResolveAssemblyReference.cache
 E:\Work\Learning\RPEFN\RPEFN.UI\obj\Debug\RPEFN.UI.Migrations.InitialMigration.resources
 E:\Work\Learning\RPEFN\RPEFN.UI\obj\Debug\RPEFN.UI.csproj.GenerateResource.Cache
 E:\Work\Learning\RPEFN\RPEFN.UI\obj\Debug\RPEFN.UI.dll
 E:\Work\Learning\RPEFN\RPEFN.UI\obj\Debug\RPEFN.UI.pdb
-E:\Work\Learning\RPEFN\RPEFN.UI\obj\Debug\RPEFN.UI.csprojResolveAssemblyReference.cache

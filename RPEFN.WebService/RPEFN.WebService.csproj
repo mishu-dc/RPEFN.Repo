@@ -243,7 +243,7 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Dtos\DrugDto.cs" />
     <Compile Include="Dtos\PatientDto.cs" />
-    <Compile Include="Dtos\Prescription.cs" />
+    <Compile Include="Dtos\PrescriptionDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
