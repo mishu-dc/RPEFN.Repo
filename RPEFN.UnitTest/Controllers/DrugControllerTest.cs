@@ -42,7 +42,7 @@ namespace RPEFN.UnitTests.Controllers
         {
             var result = await DrugController.GetDrugAsync(10000);
 
-            Assert.IsInstanceOfType(result, typeof(BadRequestResult));
+            Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
         [TestMethod]
