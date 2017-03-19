@@ -22,7 +22,7 @@ namespace RPEFN.WebService.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> GetPrescriptionAsync(int prescriptionId)
         {
-            abc
+            int ;
             try
             {
                 var rxAwait = _unitOfWork.Prescriptions.GetAsync(prescriptionId);
